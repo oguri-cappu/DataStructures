@@ -98,6 +98,23 @@ void printList(DoubleList* list)
         printf("NULL\n");
     }
 
+void deleteAtFirst(DoubleList* list)
+    {
+        if(isEmptyList(list)) return;
+        if(list->first == list->last)
+            {
+                Node* temp = list->first;
+                list->first = NULL;
+                list->last = NULL;
+                free(temp);
+                return;
+            }
+        Node* temp = list->first;
+        list->first = list->first->next;
+        list->first->prev = NULL;
+        free(temp);
+    }
+
 int main()
     {
         DoubleList list;
@@ -110,6 +127,7 @@ int main()
         addToLast(&list, 5);
         addToLast(&list, 6);
         addToPos(&list, 0, 7);
+        deleteAtFirst(&list);
 
         printList(&list);
 
