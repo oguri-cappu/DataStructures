@@ -3,3 +3,5 @@
 *.ilk
 *.exe
 *.obj
+/.vs
+*.json
